@@ -1,21 +1,23 @@
 name: React Build Action
 
-run-name: Building a react app
-
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      -uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      -name: Install node.js
-       uses: actions/setup-node@v1
-       with:
-        node-version: 16
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
 
-      -run: npm insta
-      -run: npm run build
-      -run: npm test  
+      - run: npm install
+      - run: npm run build
+      - run: npm test
